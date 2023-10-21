@@ -19,16 +19,18 @@
         background-color: aliceblue;
       }
     </style>
-    <!-- swiper styles -->
+    <!-- sliders -->
     <style>
-      .swiper {
+      .slider-1 {
+        width: 100%;
+        height: 50vh;
+      }
+      .slider-2 {
         margin-top: 1rem;
         width: 100%;
-        height: 80vh;
+        height: 30vh;
       }
-
       .swiper-slide {
-        /* background-color: aquamarine; */
         display: flex;
         justify-content: center;
         align-items: center;
@@ -37,7 +39,41 @@
       img {
         object-fit: contain;
       }
+      .slider-2__slide {
+        /* Отключил переход по ссылке на iframe */
+        pointer-events: none;
+      }
     </style>
+  </head>
+  <body>
+    <div class="swiper slider-1">
+      <div class="swiper-wrapper slider-1__wrapper"></div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+    <!-- <div class="swiper slider-2">
+      <div class="swiper-wrapper slider-2__wrapper"></div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div> -->
+    <!-- swiper config -->
+    <script type="module">
+      import Swiper from "https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.mjs";
+      const swiper = new Swiper(".swiper", {
+        direction: "horizontal",
+        loop: true,
+        pagination: {
+          el: ".swiper-pagination",
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    </script>
+    <!-- create slider -->
     <script>
       const imgLinks = [
         "https://images.unsplash.com/photo-1547619292-8816ee7cdd50?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -48,45 +84,32 @@
         "https://images.unsplash.com/photo-1547960450-2ea08b931270?auto=format&fit=crop&q=80&w=1632&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://images.unsplash.com/photo-1438283173091-5dbf5c5a3206?auto=format&fit=crop&q=80&w=1587&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       ];
-    </script>
-  </head>
-  <body>
-    <div class="swiper">
-      <div class="swiper-wrapper">
-        <img
-          class="swiper-slide"
-          src="https://images.unsplash.com/photo-1547619292-8816ee7cdd50?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt=""
-        />
 
-        <div class="swiper-slide">slide 2</div>
-        <div class="swiper-slide">slide 3</div>
-        <div class="swiper-slide">slide 4</div>
-        <div class="swiper-slide">slide 5</div>
-      </div>
-      <div class="swiper-pagination"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
-    </div>
-
-    <script type="module">
-      import Swiper from "https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.mjs";
-      const swiper = new Swiper(".swiper", {
-        // Optional parameters
-        direction: "horizontal",
-        loop: true,
-
-        // If we need pagination
-        pagination: {
-          el: ".swiper-pagination",
-        },
-
-        // Navigation arrows
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
+      const slider = document.querySelector(".slider-1__wrapper");
+      imgLinks.forEach((v) => {
+        const img = document.createElement("img");
+        img.classList.add("swiper-slide");
+        img.src = v;
+        slider.appendChild(img);
       });
     </script>
+    <!-- <script>
+      const vidLinks = [
+        "https://giphy.com/embed/08k4Wi6sjKrURt0Gvw/video",
+        "https://giphy.com/embed/kA2IC9RTchozQzY5si",
+      ];
+
+      //   const slider2 = document.querySelector(".slider-2__wrapper");
+
+      //   vidLinks.forEach((v) => {
+      //     const video = document.createElement("iframe");
+      //     video.classList.add("swiper-slide");
+      //     video.classList.add("slider-2__slide");
+      //     video.width = 420;
+      //     video.height = 315;
+      //     video.src = v;
+      //     slider2.appendChild(video);
+      //   });
+    </script> -->
   </body>
 </html>
