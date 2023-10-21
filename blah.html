@@ -9,6 +9,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
     />
+    <!-- global styles -->
     <style>
       * {
         box-sizing: border-box;
@@ -17,27 +18,47 @@
       body {
         background-color: aliceblue;
       }
+    </style>
+    <!-- swiper styles -->
+    <style>
       .swiper {
         margin-top: 1rem;
-        width: 300px;
-        height: 100px;
+        width: 100%;
+        height: 80vh;
       }
 
       .swiper-slide {
-        background-color: aquamarine;
+        /* background-color: aquamarine; */
         display: flex;
         justify-content: center;
         align-items: center;
         font-size: 30px;
       }
+      img {
+        object-fit: contain;
+      }
     </style>
+    <script>
+      const imgLinks = [
+        "https://images.unsplash.com/photo-1547619292-8816ee7cdd50?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://plus.unsplash.com/premium_photo-1661371833835-b72599f8e2af?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1571566882372-1598d88abd90?auto=format&fit=crop&q=80&w=1587&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1598983870677-01e066a0b901?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1506126944674-00c6c192e0a3?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1547960450-2ea08b931270?auto=format&fit=crop&q=80&w=1632&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1438283173091-5dbf5c5a3206?auto=format&fit=crop&q=80&w=1587&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      ];
+    </script>
   </head>
   <body>
-    <!-- <h1>ЫАО</h1> -->
-    <!-- swiper -->
     <div class="swiper">
       <div class="swiper-wrapper">
-        <div class="swiper-slide">slide 1</div>
+        <img
+          class="swiper-slide"
+          src="https://images.unsplash.com/photo-1547619292-8816ee7cdd50?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt=""
+        />
+
         <div class="swiper-slide">slide 2</div>
         <div class="swiper-slide">slide 3</div>
         <div class="swiper-slide">slide 4</div>
