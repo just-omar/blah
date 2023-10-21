@@ -19,17 +19,13 @@
         background-color: aliceblue;
       }
     </style>
-    <!-- sliders -->
+    <!-- swiper -->
     <style>
       .slider-1 {
         width: 100%;
         height: 50vh;
       }
-      .slider-2 {
-        margin-top: 1rem;
-        width: 100%;
-        height: 30vh;
-      }
+
       .swiper-slide {
         display: flex;
         justify-content: center;
@@ -39,12 +35,24 @@
       img {
         object-fit: contain;
       }
-      .slider-2__slide {
-        /* Отключил переход по ссылке на iframe */
-        pointer-events: none;
+    </style>
+    <!-- editorJS -->
+    <style>
+      .editor {
+        margin-top: 2rem;
+        width: 100%;
+        height: 150px;
+        /* box-shadow: 10px 10px 10px 10px rgba(192, 30, 30, 0.2); */
+        font-size: 25px;
+        border: 3px solid black;
       }
     </style>
+    <!-- editorJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/list@latest"></script>
   </head>
+  <!--  -->
   <body>
     <div class="swiper slider-1">
       <div class="swiper-wrapper slider-1__wrapper"></div>
@@ -52,12 +60,13 @@
       <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div>
     </div>
-    <!-- <div class="swiper slider-2">
-      <div class="swiper-wrapper slider-2__wrapper"></div>
-      <div class="swiper-pagination"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
-    </div> -->
+    <div class="editor" id="editorjs"></div>
+
+    <script>
+      fetch("https://jsonplaceholder.typicode.com/todos/12")
+        .then((response) => response.json())
+        .then((json) => console.log(json));
+    </script>
     <!-- swiper config -->
     <script type="module">
       import Swiper from "https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.mjs";
@@ -93,23 +102,29 @@
         slider.appendChild(img);
       });
     </script>
-    <!-- <script>
-      const vidLinks = [
-        "https://giphy.com/embed/08k4Wi6sjKrURt0Gvw/video",
-        "https://giphy.com/embed/kA2IC9RTchozQzY5si",
-      ];
+    <!-- create Editor -->
+    <script>
+      const editor = new EditorJS({
+        /**
+         * Id of Element that should contain the Editor
+         */
+        holder: "editorjs",
 
-      //   const slider2 = document.querySelector(".slider-2__wrapper");
-
-      //   vidLinks.forEach((v) => {
-      //     const video = document.createElement("iframe");
-      //     video.classList.add("swiper-slide");
-      //     video.classList.add("slider-2__slide");
-      //     video.width = 420;
-      //     video.height = 315;
-      //     video.src = v;
-      //     slider2.appendChild(video);
-      //   });
-    </script> -->
+        /**
+         * Available Tools list.
+         * Pass Tool's class or Settings object for each Tool you want to use
+         */
+        tools: {
+          header: {
+            class: Header,
+            inlineToolbar: ["link"],
+          },
+          list: {
+            class: List,
+            inlineToolbar: true,
+          },
+        },
+      });
+    </script>
   </body>
 </html>
