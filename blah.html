@@ -4,18 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>BLAH</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
     />
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css"
-      integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm"
-      crossorigin="anonymous"
-    />
     <!-- global styles -->
     <style>
       * {
@@ -29,6 +23,22 @@
         max-width: 1200px;
         margin: 0 auto;
         padding: 0 1rem;
+        display: flex;
+      }
+      button {
+        width: 100px;
+        height: 50px;
+        background-color: white;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 10px 5px 10px 2px blue;
+        cursor: pointer;
+      }
+      button:hover {
+        box-shadow: 10px 5px 10px 2px red;
+      }
+      button:active {
+        transform: scale(1.2);
       }
     </style>
     <!-- navbar -->
@@ -37,25 +47,12 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-bottom: 2rem;
+        margin: 1rem 0;
       }
-      ul {
+      nav ul {
         display: flex;
         gap: 2rem;
         list-style-type: none;
-      }
-      button {
-        width: 100px;
-        height: 50px;
-        background-color: white;
-        border: none;
-        border-radius: 5px;
-        box-shadow: 10px 5px 10px 2px red;
-        cursor: pointer;
-      }
-      button:hover {
-        transform: scale(1.2);
-        box-shadow: 10px 5px 10px 2px blue;
       }
     </style>
     <!-- swiper styles-->
@@ -79,44 +76,132 @@
   <!--  -->
   <body>
     <header>
+      <button class="burger-open">Open aside</button>
       <nav>
-        <a href="">
+        <!-- <a href="">
           <img
             src="https://cdn.you.com/img/shared/logos/ydc-logo.svg"
             height="32"
             width="110"
             alt=""
           />
-        </a>
+        </a> -->
         <ul>
           <li>
-            <button>Swiper</button>
+            <button onclick="showPage('page-1')">Swiper</button>
           </li>
           <li>
-            <button>All</button>
+            <button onclick="showPage('page-2')">All</button>
           </li>
           <li>
-            <button>Images</button>
+            <button onclick="showPage('page-3')">Images</button>
           </li>
           <li>
-            <button>Videos</button>
+            <button onclick="showPage('page-4')">Videos</button>
           </li>
           <li>
-            <button>News</button>
+            <button onclick="showPage('page-5')">News</button>
           </li>
           <li>
-            <button>Maps</button>
-          </li>
-          <li>
-            <button>Social</button>
-          </li>
-          <li>
-            <button>More</button>
+            <button onclick="showPage('page-6')">Maps</button>
           </li>
         </ul>
       </nav>
     </header>
-    <main class="container">
+    <style>
+      aside {
+        opacity: 1;
+      }
+      .aside {
+        padding: 1rem 20px;
+
+        position: fixed;
+        display: flex;
+        justify-content: space-between;
+        top: 0;
+        left: 0;
+        border: 2px solid black;
+        width: 300px;
+        height: 100vh;
+        background-color: lightsalmon;
+        transition: width 1s;
+        opacity: 1;
+        z-index: 2000;
+      }
+      .aside > ul {
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        list-style-type: none;
+        /* border: 2px dashed salmon; */
+      }
+      .aside > ul > li {
+        font-size: 20px;
+      }
+      .burger-close {
+        background-color: greenyellow;
+      }
+      .burger-open {
+        background-color: salmon;
+      }
+      .aside-close {
+        /* width: 0;
+        visibility: hidden; */
+
+        width: 0;
+        display: none;
+      }
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(
+          0,
+          0,
+          0,
+          0.7
+        ); /* Adjust the opacity value (0.3) to your desired transparency */
+        z-index: 1000; /* Ensure the overlay appears on top of other elements */
+        /* pointer-events: none; Allow click events to pass through the overlay */
+      }
+    </style>
+    <div class="overlay"></div>
+
+    <aside class="aside">
+      <ul>
+        <li>hey</li>
+        <li>foo</li>
+        <li>bar</li>
+        <li>blah</li>
+        <li>purr</li>
+      </ul>
+      <button class="burger-close">Close Aside</button>
+    </aside>
+    <script>
+      var pages = document.querySelectorAll(".page");
+
+      const aside = document.querySelector(".aside");
+      const closeAsideBtn = aside.querySelector(".burger-close");
+      closeAsideBtn.addEventListener("click", (evt) => {
+        aside.classList.toggle("aside-close");
+        // document.body.classList.remove("blured-bg");
+        // pages.forEach((v) => v.classList.remove("blured-bg"));
+      });
+
+      const openAsideBtn = document.querySelector(".burger-open");
+      openAsideBtn.addEventListener("click", (evt) => {
+        aside.classList.toggle("aside-close");
+        // document.body.classList.add("blured-bg");
+        // pages.forEach((v) => v.classList.add("blured-bg"));
+      });
+    </script>
+    <main class="page page-0 container">
+      <h1>BLAH PAGE</h1>
+    </main>
+    <main class="page page-1">
       <section>
         <div class="swiper slider-1">
           <div class="swiper-wrapper slider-1__wrapper"></div>
@@ -126,7 +211,39 @@
         </div>
       </section>
     </main>
+    <main class="page page-2">
+      <h1>ALL page</h1>
+    </main>
+    <main class="page page-3">
+      <h1>Images page</h1>
+    </main>
+    <main class="page page-4">
+      <h1>Videos page</h1>
+    </main>
+    <main class="page page-5">
+      <h1>News page</h1>
+    </main>
+    <main class="page page-6">
+      <h1>Maps page</h1>
+    </main>
+    <!-- pages -->
+    <script>
+      var pages = document.querySelectorAll(".page");
 
+      for (let i = 1; i < pages.length; i++) {
+        pages[i].style.display = "none";
+      }
+
+      function showPage(pageName) {
+        for (let i = 0; i < pages.length; i++) {
+          pages[i].style.display = "none";
+        }
+        var page = document.querySelector("." + pageName);
+        if (page) {
+          page.style.display = "block";
+        }
+      }
+    </script>
     <!-- <script>
       fetch("https://jsonplaceholder.typicode.com/todos/")
         .then((response) => response.json())
