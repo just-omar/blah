@@ -109,26 +109,24 @@
       </nav>
     </header>
     <style>
-      aside {
-        opacity: 1;
-      }
       .aside {
-        padding: 1rem 20px;
-
         position: fixed;
         display: flex;
         justify-content: space-between;
         top: 0;
         left: 0;
         border: 2px solid black;
-        width: 300px;
-        height: 100vh;
+        width: 0;
+        overflow: hidden;
+        height: 100%;
+
         background-color: lightsalmon;
         transition: width 1s;
         opacity: 1;
         z-index: 2000;
       }
       .aside > ul {
+        margin: 2rem;
         padding: 0;
         display: flex;
         flex-direction: column;
@@ -145,12 +143,8 @@
       .burger-open {
         background-color: salmon;
       }
-      .aside-close {
-        /* width: 0;
-        visibility: hidden; */
-
-        width: 0;
-        display: none;
+      .aside-open {
+        width: 300px;
       }
       .overlay {
         position: fixed;
@@ -168,7 +162,7 @@
         /* pointer-events: none; Allow click events to pass through the overlay */
       }
     </style>
-    <div class="overlay"></div>
+    <!-- <div class="overlay"></div> -->
 
     <aside class="aside">
       <ul>
@@ -186,14 +180,14 @@
       const aside = document.querySelector(".aside");
       const closeAsideBtn = aside.querySelector(".burger-close");
       closeAsideBtn.addEventListener("click", (evt) => {
-        aside.classList.toggle("aside-close");
+        aside.classList.toggle("aside-open");
         // document.body.classList.remove("blured-bg");
         // pages.forEach((v) => v.classList.remove("blured-bg"));
       });
 
       const openAsideBtn = document.querySelector(".burger-open");
       openAsideBtn.addEventListener("click", (evt) => {
-        aside.classList.toggle("aside-close");
+        aside.classList.toggle("aside-open");
         // document.body.classList.add("blured-bg");
         // pages.forEach((v) => v.classList.add("blured-bg"));
       });
