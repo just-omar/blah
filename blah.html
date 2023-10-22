@@ -9,6 +9,13 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
     />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css"
+      integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm"
+      crossorigin="anonymous"
+    />
     <!-- global styles -->
     <style>
       * {
@@ -17,6 +24,38 @@
       }
       body {
         background-color: aliceblue;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+    </style>
+    <!-- navbar -->
+    <style>
+      nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 2rem;
+      }
+      ul {
+        display: flex;
+        gap: 2rem;
+        list-style-type: none;
+      }
+      button {
+        width: 100px;
+        height: 50px;
+        background-color: white;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 10px 5px 10px 2px red;
+        cursor: pointer;
+      }
+      button:hover {
+        transform: scale(1.2);
+        box-shadow: 10px 5px 10px 2px blue;
       }
     </style>
     <!-- swiper styles-->
@@ -36,37 +75,63 @@
         object-fit: contain;
       }
     </style>
-    <!-- editorJS styles-->
-    <style>
-      .editor {
-        margin-top: 2rem;
-        width: 100%;
-        height: 150px;
-        /* box-shadow: 10px 10px 10px 10px rgba(192, 30, 30, 0.2); */
-        font-size: 25px;
-        border: 3px solid black;
-      }
-    </style>
-    <!-- editorJS CDNs -->
-    <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@editorjs/list@latest"></script>
   </head>
   <!--  -->
   <body>
-    <div class="swiper slider-1">
-      <div class="swiper-wrapper slider-1__wrapper"></div>
-      <div class="swiper-pagination"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
-    </div>
-    <div class="editor" id="editorjs"></div>
+    <header>
+      <nav>
+        <a href="">
+          <img
+            src="https://cdn.you.com/img/shared/logos/ydc-logo.svg"
+            height="32"
+            width="110"
+            alt=""
+          />
+        </a>
+        <ul>
+          <li>
+            <button>Swiper</button>
+          </li>
+          <li>
+            <button>All</button>
+          </li>
+          <li>
+            <button>Images</button>
+          </li>
+          <li>
+            <button>Videos</button>
+          </li>
+          <li>
+            <button>News</button>
+          </li>
+          <li>
+            <button>Maps</button>
+          </li>
+          <li>
+            <button>Social</button>
+          </li>
+          <li>
+            <button>More</button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="container">
+      <section>
+        <div class="swiper slider-1">
+          <div class="swiper-wrapper slider-1__wrapper"></div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </section>
+    </main>
 
-    <script>
+    <!-- <script>
       fetch("https://jsonplaceholder.typicode.com/todos/")
         .then((response) => response.json())
         .then((json) => console.log(json));
-    </script>
+    </script> -->
     <!-- swiper config -->
     <script type="module">
       import Swiper from "https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.mjs";
@@ -100,30 +165,6 @@
         img.classList.add("swiper-slide");
         img.src = v;
         slider.appendChild(img);
-      });
-    </script>
-    <!-- create Editor -->
-    <script>
-      const editor = new EditorJS({
-        /**
-         * Id of Element that should contain the Editor
-         */
-        holder: "editorjs",
-
-        /**
-         * Available Tools list.
-         * Pass Tool's class or Settings object for each Tool you want to use
-         */
-        tools: {
-          header: {
-            class: Header,
-            inlineToolbar: ["link"],
-          },
-          list: {
-            class: List,
-            inlineToolbar: true,
-          },
-        },
       });
     </script>
   </body>
